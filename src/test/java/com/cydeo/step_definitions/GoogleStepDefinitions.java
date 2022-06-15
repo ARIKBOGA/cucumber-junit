@@ -25,13 +25,13 @@ public class GoogleStepDefinitions {
         System.out.println("User is seeing title is Google");
     }
 
-    @When("user types {string} and clicks enter")
+    @When("user types {word} and clicks enter")
     public void userTypesAndClicksEnter(String searchValue) {
         GOOGLE_SEARCH_PAGE.searchBox.sendKeys(searchValue + Keys.ENTER);
         System.out.println("User is typing and clicking enter");
     }
 
-    @Then("user sees {string} in the goggle title")
+    @Then("user sees {string} in the google title")
     public void userSeesInTheGoggleTitle(String searchValue) {
 
         Assert.assertTrue(DRIVER.getTitle().contains(searchValue));

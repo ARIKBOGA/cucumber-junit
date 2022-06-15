@@ -12,11 +12,13 @@ import java.io.IOException;
 public class Hooks {
     @Before
     public void setUp() {
-        Driver.getDriver();
+       // Driver.getDriver();
     }
 
     @After
     public void teardownScenario(Scenario scenario) throws IOException {
+
+        // Take a screenshot if the scenario fails
         if (scenario.isFailed()) {
             final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", scenario.getName());

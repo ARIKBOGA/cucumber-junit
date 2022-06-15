@@ -33,7 +33,11 @@ public class GoogleStepDefinitions {
 
     @Then("user sees {string} in the goggle title")
     public void userSeesInTheGoggleTitle(String searchValue) {
+
         Assert.assertTrue(DRIVER.getTitle().contains(searchValue));
+
+        Assert.assertEquals(DRIVER.getTitle(), searchValue + " - Google'da Ara");
+
         if (DRIVER.getTitle().contains(searchValue)) {
             System.out.println("User is seeing " + searchValue + " in the google title");
         } else {

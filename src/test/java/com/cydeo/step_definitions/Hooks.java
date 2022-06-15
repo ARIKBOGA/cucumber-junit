@@ -4,9 +4,7 @@ import com.cydeo.utulities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
-import org.bouncycastle.util.test.SimpleTestResult;
-import org.bouncycastle.util.test.TestResult;
-import org.junit.Test;
+import io.cucumber.java.BeforeStep;
 
 public class Hooks {
     @Before
@@ -19,7 +17,9 @@ public class Hooks {
         Driver.closeDriver();
     }
 
+    @BeforeStep
+    public void beforeStep() {}
+
     @AfterStep
-    public void takesScreenshot() {
-    }
+    public void takesScreenshot() {}
 }

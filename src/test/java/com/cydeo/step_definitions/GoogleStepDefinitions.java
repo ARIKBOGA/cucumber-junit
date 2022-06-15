@@ -36,7 +36,7 @@ public class GoogleStepDefinitions {
 
         Assert.assertTrue(DRIVER.getTitle().contains(searchValue));
 
-        Assert.assertEquals(DRIVER.getTitle(), searchValue + " - Google'da Ara");
+        Assert.assertEquals(searchValue + " - Google'da Ara", DRIVER.getTitle());
 
         if (DRIVER.getTitle().contains(searchValue)) {
             System.out.println("User is seeing " + searchValue + " in the google title");

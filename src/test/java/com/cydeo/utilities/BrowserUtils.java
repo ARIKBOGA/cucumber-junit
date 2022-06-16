@@ -1,5 +1,6 @@
 package com.cydeo.utilities;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -108,5 +109,40 @@ public class BrowserUtils {
                 .stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
+    }
+
+
+    /**
+     * This method will accept a WebElement which can be used to a Select and selects the given option
+     * @param dropdown : This method will accept a WebElement which can be assumed to be a dropdown
+     * @param option : This method will accept a String "option"
+     */
+    public static void selectAnOptionFromDropdown(WebElement dropdown, String option) {
+        Select select = new Select(dropdown);
+        select.selectByVisibleText(option);
+    }
+
+    /**
+     * This method will accept a WebElement which can be used to a Select
+     * @param productDropdown: This method will accept a WebElement which can be assumed to be a dropdown
+     * @return This method will return the first selected option given element
+     */
+    public static WebElement getFirstSelectedOption(WebElement productDropdown) {
+        Select select = new Select(productDropdown);
+        return select.getFirstSelectedOption();
+    }
+
+
+    /**
+     * This method selects the given value from a list of RadioButtons
+     * It compares text of the radio button with the given value
+     * @param radioButtons : List of RadioButtons
+     * @param value: String value of will be selected radio button
+     */
+    public static void selectFromRadioButtons(@NotNull List<WebElement> radioButtons, String value) {
+        radioButtons.stream()
+                .filter(each -> each.getText().equalsIgnoreCase(value))
+                .findFirst()
+                .ifPresent(WebElement::click);
     }
 }

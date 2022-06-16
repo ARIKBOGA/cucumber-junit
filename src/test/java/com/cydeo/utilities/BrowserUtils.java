@@ -1,4 +1,4 @@
-package com.cydeo.utulities;
+package com.cydeo.utilities;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -67,5 +67,10 @@ public class BrowserUtils {
         //Driver.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
         wait.until(ExpectedConditions.invisibilityOf(webElement));
+    }
+
+    public static void verifyURLContains(String orders) {
+        String url = driver.getCurrentUrl();
+        Assert.assertTrue(url.contains(orders));
     }
 }

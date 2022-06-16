@@ -1,6 +1,6 @@
 package com.cydeo.step_definitions;
 
-import com.cydeo.utulities.Driver;
+import com.cydeo.utilities.Driver;
 import com.google.common.io.Files;
 import io.cucumber.java.*;
 import org.openqa.selenium.OutputType;
@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class Hooks {
+
     @Before
     public void setUp() {
        // Driver.getDriver();

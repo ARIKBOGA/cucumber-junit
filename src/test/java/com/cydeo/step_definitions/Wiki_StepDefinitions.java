@@ -1,7 +1,7 @@
 package com.cydeo.step_definitions;
 
 import com.cydeo.pages.WikiSearchPage;
-import com.cydeo.utulities.Driver;
+import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,8 +11,8 @@ import org.openqa.selenium.WebDriver;
 
 public class Wiki_StepDefinitions {
 
-    private WikiSearchPage wikiSearchPage = new WikiSearchPage();
-    private WebDriver driver= Driver.getDriver();
+    public WikiSearchPage wikiSearchPage = new WikiSearchPage();
+    public WebDriver driver = Driver.getDriver();
 
     @Given("User is on the Wikipedia home page")
     public void userIsOnTheWikipediaHomePage() {

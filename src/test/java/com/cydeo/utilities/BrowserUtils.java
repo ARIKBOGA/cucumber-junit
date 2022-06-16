@@ -11,10 +11,12 @@ import java.util.Set;
 public class BrowserUtils {
 
     private static WebDriver driver = Driver.getDriver();
+    private static WebDriverWait wait = new WebDriverWait(driver, 5);
 
-    /*
-    This method will accept int (in seconds) and execute Thread.sleep
-    for given duration
+
+    /**
+     * This method will wait throughout the given time.
+     * @param second : time in seconds to wait explicitly
      */
     public static void sleep(int second) {
         try {
@@ -24,14 +26,24 @@ public class BrowserUtils {
         }
     }
 
-    /*
-    This method accepts 3 arguments.
-    Arg1: webdriver
-    Arg2: expectedInUrl : for verify if the url contains given String.
-        - If condition matches, will break loop.
-    Arg3: expectedInTitle to be compared against actualTitle
+
+    /**
+     * This method will wait until the given element is visible.
+     * @param element : element to wait for visibility of it
      */
-    public static void switchWindowAndVerify( String expectedInUrl, String expectedInTitle) {
+    public static void waitForClickability(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+
+    /**
+     * This method looks for if the given URL and Title are present in the browser's tabs.
+     *
+     * @param expectedInUrl    : expected URL , for verify if the url contains given String.
+     *                         - If condition matches, will break loop.
+     * @param expectedInTitle: expected Title, expectedInTitle to be compared against actualTitle
+     */
+    public static void switchWindowAndVerify(String expectedInUrl, String expectedInTitle) {
 
         Set<String> allWindowsHandles = driver.getWindowHandles();
 
@@ -51,26 +63,34 @@ public class BrowserUtils {
         Assert.assertTrue(actualTitle.contains(expectedInTitle));
     }
 
-    /*
-    This method accepts a String "expectedTitle" and Asserts if it is true
+
+    /**
+     * This method accepts a String "expectedTitle" and Asserts if it is true
+     *
+     * @param expectedTitle: expected title to be compared against actualTitle
      */
-    public static void verifyTitle( String expectedTitle) {
-
+    public static void verifyTitle(String expectedTitle) {
         Assert.assertEquals(driver.getTitle(), expectedTitle);
-
     }
 
-    /*
-    Creating a utility method for ExplicitWait, so we don't have to repeat the lines
+
+    /**
+     * Creating a utility method for ExplicitWait, so we don't have to repeat the lines
+     *
+     * @param webElement : This method will accept a WebElement
      */
     public static void waitForInvisibilityOf(WebElement webElement) {
         //Driver.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
         wait.until(ExpectedConditions.invisibilityOf(webElement));
     }
 
-    public static void verifyURLContains(String orders) {
-        String url = driver.getCurrentUrl();
-        Assert.assertTrue(url.contains(orders));
+
+    /**
+     * This method will accept a String "expectedText" and Asserts if it is true
+     *
+     * @param expectedInUrl : This method will accept a String "expectedText"
+     */
+    public static void verifyURLContains(String expectedInUrl) {
+        Assert.assertTrue(driver.getCurrentUrl().contains(expectedInUrl));
     }
 }

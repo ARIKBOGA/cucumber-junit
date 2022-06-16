@@ -1,7 +1,6 @@
 package com.cydeo.utilities;
 
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,10 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.Set;
 
 public class BrowserUtils {
-
-    private static WebDriver driver = Driver.getDriver();
-    private static WebDriverWait wait = new WebDriverWait(driver, 5);
-
 
     /**
      * This method will wait throughout the given time.
@@ -32,6 +27,7 @@ public class BrowserUtils {
      * @param element : element to wait for visibility of it
      */
     public static void waitForClickability(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
@@ -45,21 +41,21 @@ public class BrowserUtils {
      */
     public static void switchWindowAndVerify(String expectedInUrl, String expectedInTitle) {
 
-        Set<String> allWindowsHandles = driver.getWindowHandles();
+        Set<String> allWindowsHandles = Driver.getDriver().getWindowHandles();
 
         for (String each : allWindowsHandles) {
 
-            driver.switchTo().window(each);
+            Driver.getDriver().switchTo().window(each);
 
-            System.out.println("Current URL: " + driver.getCurrentUrl());
+            System.out.println("Current URL: " + Driver.getDriver().getCurrentUrl());
 
-            if (driver.getCurrentUrl().contains(expectedInUrl)) {
+            if (Driver.getDriver().getCurrentUrl().contains(expectedInUrl)) {
                 break;
             }
         }
 
         //5. Assert:Title contains “expectedInTitle”
-        String actualTitle = driver.getTitle();
+        String actualTitle = Driver.getDriver().getTitle();
         Assert.assertTrue(actualTitle.contains(expectedInTitle));
     }
 
@@ -70,7 +66,7 @@ public class BrowserUtils {
      * @param expectedTitle: expected title to be compared against actualTitle
      */
     public static void verifyTitle(String expectedTitle) {
-        Assert.assertEquals(driver.getTitle(), expectedTitle);
+        Assert.assertEquals(Driver.getDriver().getTitle(), expectedTitle);
     }
 
 
@@ -81,6 +77,7 @@ public class BrowserUtils {
      */
     public static void waitForInvisibilityOf(WebElement webElement) {
         //Driver.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
         wait.until(ExpectedConditions.invisibilityOf(webElement));
     }
 
@@ -91,6 +88,6 @@ public class BrowserUtils {
      * @param expectedInUrl : This method will accept a String "expectedText"
      */
     public static void verifyURLContains(String expectedInUrl) {
-        Assert.assertTrue(driver.getCurrentUrl().contains(expectedInUrl));
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedInUrl));
     }
 }

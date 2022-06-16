@@ -37,8 +37,8 @@ public class WebTableLoginPage {
 
     /**
      * This method will accept two arguments and login.
-     * @param username
-     * @param password
+     * @param username : username to login
+     * @param password : password to login
      */
     public void login(String username, String password){
         inputUsername.sendKeys(username);

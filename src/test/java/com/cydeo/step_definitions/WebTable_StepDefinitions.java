@@ -7,12 +7,13 @@ import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
 public class WebTable_StepDefinitions {
 
-    WebTableLoginPage webTableLoginPage = new WebTableLoginPage();
+    private WebTableLoginPage webTableLoginPage = new WebTableLoginPage();
 
     @Given("user is on the login page of web table application")
     public void user_is_on_the_login_page_of_web_table_app() {
@@ -41,14 +42,12 @@ public class WebTable_StepDefinitions {
     }
 
     @When("user enters username {string} password {string} and logins")
-    public void userEntersUsernamePasswordAndLogins(String username, String pw) {
-
-        webTableLoginPage.login(username, pw);
-
+    public void userEntersUsernamePasswordAndLogins(String username, String password) {
+        webTableLoginPage.login(username, password);
     }
 
     @When("user enters below credentials")
-    public void user_enters_below_credentials(Map<String, String> credentials) {
+    public void user_enters_below_credentials(@NotNull Map<String, String> credentials) {
 
         // webTableLoginPage.inputUsername.sendKeys(credentials.get("username"));
         // webTableLoginPage.inputPassword.sendKeys(credentials.get("password"));

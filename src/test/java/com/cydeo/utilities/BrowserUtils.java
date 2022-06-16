@@ -3,14 +3,18 @@ package com.cydeo.utilities;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class BrowserUtils {
 
     /**
      * This method will wait throughout the given time.
+     *
      * @param second : time in seconds to wait explicitly
      */
     public static void sleep(int second) {
@@ -24,6 +28,7 @@ public class BrowserUtils {
 
     /**
      * This method will wait until the given element is visible.
+     *
      * @param element : element to wait for visibility of it
      */
     public static void waitForClickability(WebElement element) {
@@ -89,5 +94,19 @@ public class BrowserUtils {
      */
     public static void verifyURLContains(String expectedInUrl) {
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedInUrl));
+    }
+
+
+    /**
+     * This method returns a list of strings of given dropdown element's options
+     * @param dropdown : This method will accept a WebElement which can be assumed to be a dropdown
+     * @return : List<String> of dropdown element's options
+     */
+    public static List<String> dropdownOptionsAsStringList(WebElement dropdown) {
+        Select select = new Select(dropdown);
+        return select.getOptions()
+                .stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
     }
 }

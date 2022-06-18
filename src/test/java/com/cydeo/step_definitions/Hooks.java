@@ -28,12 +28,4 @@ public class Hooks {
         }
         Driver.closeDriver();
     }
-
-    @BeforeStep
-    public void beforeStep() {
-    }
-
-    @AfterStep
-    public void takesScreenshot() {
-    }
 }

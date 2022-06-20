@@ -62,7 +62,7 @@ public class Order_StepDefinitions {
 
     @And("user selects credit card type {string}")
     public void userSelectsCreditCardType(String creditCardType) {
-       BrowserUtils.selectFromRadioButtons(orderPage.creditCardsRadioButtons, creditCardType);
+       BrowserUtils.clickRadioButton(orderPage.creditCardsRadioButtons, creditCardType);
     }
 
     @And("user enters credit card number {string}")

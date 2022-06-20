@@ -1,6 +1,7 @@
 package com.cydeo.step_definitions;
 
 import com.cydeo.pages.OrderPage;
+import com.cydeo.pages.ViewAllOrdersPage;
 import com.cydeo.pages.WebTableLoginPage;
 import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.ConfigurationReader;
@@ -15,6 +16,7 @@ public class Order_StepDefinitions {
 
     WebTableLoginPage webTableLoginPage = new WebTableLoginPage();
     OrderPage orderPage = new OrderPage();
+    ViewAllOrdersPage viewAllOrdersPage = new ViewAllOrdersPage();
 
     @Given("user is already logged in and on order page")
     public void userIsAlreadyLoggedInAndOnOrderPage() {
@@ -62,7 +64,7 @@ public class Order_StepDefinitions {
 
     @And("user selects credit card type {string}")
     public void userSelectsCreditCardType(String creditCardType) {
-       BrowserUtils.clickRadioButton(orderPage.creditCardsRadioButtons, creditCardType);
+        BrowserUtils.clickRadioButton(orderPage.creditCardsRadioButtons, creditCardType);
     }
 
     @And("user enters credit card number {string}")
@@ -82,7 +84,7 @@ public class Order_StepDefinitions {
 
     @Then("user should see {string} in first row of the web table")
     public void userShouldSeeInFirstRowOfTheWebTable(String productType) {
-        String firstRow = orderPage.ordersCustomerNamesList.get(0).getText();
+        String firstRow = viewAllOrdersPage.ordersCustomerNamesList.get(0).getText();
         Assert.assertEquals(productType, firstRow);
     }
 }

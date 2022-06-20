@@ -68,9 +68,6 @@ public class OrderPage extends BasePage {
     @FindBy(xpath = "//button[.='Reset Fields']")
     public WebElement resetFieldsButton;
 
-    @FindBy(xpath = "//tbody/tr//td[1]")
-    public List<WebElement> ordersCustomerNamesList;
-
     public OrderPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }

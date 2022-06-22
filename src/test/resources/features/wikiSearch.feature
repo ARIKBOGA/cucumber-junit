@@ -19,7 +19,7 @@ Feature: Wikipedia search functionality and verification
       | searchValue       | expectedTitle     | expectedMainHeader |
       | Steve Jobs        | Steve Jobs        | Steve Jobs         |
       | Cristiano Ronaldo | Cristiano Ronaldo | Cristiano Ronaldo  |
-      | Bob Marley        | Bob Marley        | Bob Marle          |
+      | Bob Marley        | Bob Marley        | Bob Marley         |
       | Penélope Cruz     | Penélope Cruz     | Penélope Cruz      |
 
 

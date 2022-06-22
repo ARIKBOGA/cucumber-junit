@@ -8,7 +8,7 @@ Feature: Wikipedia search functionality and verification
     Then User sees "Steve Jobs" in the wiki title
 
 
-    @scenarioOutline @wip
+    @scenarioOutline
   Scenario Outline: Wikipedia Search Functionality Title Verification
     Given User is on the Wikipedia home page
     When User types "<searchValue>" in the wiki search box

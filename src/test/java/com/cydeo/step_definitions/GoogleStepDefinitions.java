@@ -10,18 +10,18 @@ import org.openqa.selenium.WebDriver;
 
 public class GoogleStepDefinitions {
 
-    private static final WebDriver DRIVER = Driver.getDriver();
-    private static final GoogleSearchPage GOOGLE_SEARCH_PAGE = new GoogleSearchPage();
+    //private static final WebDriver DRIVER = Driver.getDriver();
+    private  GoogleSearchPage GOOGLE_SEARCH_PAGE = new GoogleSearchPage();
 
     @When("user is on Google search page")
     public void userIsOnGoogleSearchPage() {
-        DRIVER.get("https://www.google.com");
+        Driver.getDriver().get("https://www.google.com");
         System.out.println("User is on google search page");
     }
 
     @Then("user should see title is Google")
     public void userShouldSeeTitleIsGoogle() {
-        Assert.assertEquals(DRIVER.getTitle(), "Google");
+        Assert.assertEquals(Driver.getDriver().getTitle(), "Google");
         System.out.println("User is seeing title is Google");
     }
 
@@ -34,11 +34,11 @@ public class GoogleStepDefinitions {
     @Then("user sees {string} in the google title")
     public void userSeesInTheGoggleTitle(String searchValue) {
 
-        Assert.assertTrue(DRIVER.getTitle().contains(searchValue));
+        Assert.assertTrue(Driver.getDriver().getTitle().contains(searchValue));
 
-        Assert.assertEquals(searchValue + " - Google'da Ara", DRIVER.getTitle());
+        Assert.assertEquals(searchValue + " - Google'da Ara", Driver.getDriver().getTitle());
 
-        if (DRIVER.getTitle().contains(searchValue)) {
+        if (Driver.getDriver().getTitle().contains(searchValue)) {
             System.out.println("User is seeing " + searchValue + " in the google title");
         } else {
             System.out.println("User is not seeing " + searchValue + " in the google title");

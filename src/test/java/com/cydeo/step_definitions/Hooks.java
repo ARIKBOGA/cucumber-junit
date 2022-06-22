@@ -11,9 +11,9 @@ import java.io.IOException;
 
 public class Hooks {
 
-    @Before
+    //@Before
     public void setUp() {
-       // Driver.getDriver();
+        Driver.getDriver();
     }
 
     @After

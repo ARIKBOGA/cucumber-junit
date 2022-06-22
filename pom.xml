@@ -49,11 +49,18 @@
             <version>7.3.4</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>20.1.0</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>me.jvt.cucumber</groupId>
+            <artifactId>reporting-plugin</artifactId>
+            <version>7.3.0</version>
         </dependency>
 
 

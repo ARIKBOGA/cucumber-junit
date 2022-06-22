@@ -8,7 +8,7 @@ Feature: Wikipedia search functionality and verification
     Then User sees "Steve Jobs" in the wiki title
 
 
-    @scenarioOutline
+    @scenarioOutline @wip
   Scenario Outline: Wikipedia Search Functionality Title Verification
     Given User is on the Wikipedia home page
     When User types "<searchValue>" in the wiki search box
@@ -19,7 +19,7 @@ Feature: Wikipedia search functionality and verification
       | searchValue       | expectedTitle     | expectedMainHeader |
       | Steve Jobs        | Steve Jobs        | Steve Jobs         |
       | Cristiano Ronaldo | Cristiano Ronaldo | Cristiano Ronaldo  |
-      | Bob Marley        | Bob Marley        | Bob Marley         |
+      | Bob Marley        | Bob Marley        | Bob Marle          |
       | Penélope Cruz     | Penélope Cruz     | Penélope Cruz      |
 
 

@@ -20,7 +20,7 @@ public abstract class Driver {
     access to the object of this class from outside the class
      */
 
-    private static InheritableThreadLocal<WebDriver> driverPool = new InheritableThreadLocal<>();
+    private static final InheritableThreadLocal<WebDriver> driverPool = new InheritableThreadLocal<>();
     /*
     Create a re-usable utility method which will return same driver instance when we call it
      */
